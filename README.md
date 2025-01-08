@@ -1,77 +1,59 @@
-Overview
+### Water Reminder Chrome Extension
 
-The Water Reminder Chrome extension is a simple and effective tool to help users stay hydrated. It features a countdown timer that reminds you to drink water every hour and provides notifications. You can reset the timer or trigger a manual reminder with just a click.
+#### Overview
+The **Water Reminder** Chrome extension is a simple tool designed to help you stay hydrated by reminding you to drink water at regular intervals. It tracks your hydration progress throughout the day and includes snoozing functionality for reminders.
 
-Features
-	•	Hourly hydration reminders.
-	•	Countdown timer with an interactive user interface.
-	•	Manual “Drink Water” notification option.
-	•	Automatic persistence of countdown time across browser sessions.
-	•	Customizable and lightweight extension.
+#### Features
+- Hourly reminders to drink water.
+- Daily hydration log to track progress.
+- Buttons to log hydration or snooze reminders.
+- Visual progress tracker for hydration goals.
+- Manual hydration reminder option.
 
-File Structure
-	•	background.js: Contains the logic for the countdown timer and background notifications.
-	•	manifest.json: Defines the extension’s metadata and permissions.
-	•	popup.html: The UI for user interaction, displaying the timer and buttons.
-	•	popup.js: Handles button interactions and updates the countdown UI.
-	•	icon16.png, icon48.png, icon128.png: Icons used for the extension in various sizes.
+#### Installation
+1. Clone or download the project files.
+2. Open Chrome and navigate to `chrome://extensions`.
+3. Enable **Developer Mode**.
+4. Click **Load unpacked** and select the folder containing the project files.
+5. The extension will appear in the extensions bar.
 
-Setup and Installation
-	1.	Clone or download the project files.
-	2.	Open Chrome and navigate to chrome://extensions.
-	3.	Enable Developer Mode.
-	4.	Click Load unpacked and select the folder containing the project files.
-	5.	The extension will appear in the extensions bar with the “Water Reminder” icon.
- 
-How It Works
+#### Usage
+1. Click on the extension icon in the toolbar to open the popup.
+2. Use the following buttons:
+   - **"Drank Water" (Yes):** Log hydration for the current hour.
+   - **"Wait":** Snooze the reminder for 10 minutes.
+   - **"Remind Me Now":** Trigger an immediate hydration reminder.
+3. View your daily progress in the hydration log section.
 
-Flowchart
-+------------------------+
-| User interacts with UI |
-| (popup.html, popup.js) |
-+-----------+------------+
-            |
-            v
-+------------------------+
-| Message sent to        |
-| background script      |
-| (background.js)        |
-+-----------+------------+
-            |
-            v
-+------------------------+
-| Timer logic and        |
-| notifications handled  |
-| (background.js)        |
-+-----------+------------+
-            |
-            v
-+------------------------+
-| Countdown time stored  |
-| in local storage       |
-| (chrome.storage API)   |
-+------------------------+
-The flowchart below illustrates the structure and operation of the extension:
-Key Workflows
-	1.	Timer Initialization:
-	•	On extension load or browser startup, the timer retrieves the saved countdown time (or starts from 1 hour by default) and begins decrementing.
-	2.	Reset Timer:
-	•	When the “Drank Water” button is clicked, the timer resets to 1 hour, and the countdown restarts.
-	3.	Manual Reminder:
-	•	Clicking “Remind Me Now” triggers an immediate notification reminding the user to drink water.
+#### How It Works
 
-Future Improvements
+```mermaid
+graph LR
+A[User Opens Popup] --> B{User Action}
+B -->|Drank Water| C[Log Hydration Hour]
+B -->|Wait| D[Snooze Reminder]
+B -->|Remind Me Now| E[Immediate Notification]
+C --> F[Update Log Display]
+D --> G[Set 10-Min Timer]
+```
 
-Here are some areas to enhance the extension:
-	•	Add user settings to customize the reminder interval.
-	•	Integrate sound notifications alongside visual ones.
-	•	Provide analytics to track hydration habits over time.
-	•	Localize the extension for different languages.
+#### File Structure
+- `background.js`: Handles the countdown timer, notifications, and snoozing functionality.
+- `popup.js`: Manages user interactions in the popup and updates the hydration log.
+- `popup.html`: Defines the user interface for the extension popup.
+- `manifest.json`: Metadata and permissions for the Chrome extension.
+- Icons (`icon16.png`, `icon48.png`, `icon128.png`): Icons used for the extension at various resolutions.
 
-Contributing
+#### Future Improvements
+- Customizable reminder intervals.
+- Gamified elements like achievements and badges.
+- Weekly and monthly hydration analytics.
+- Integration with smartwatches and mobile devices.
 
-Contributions are welcome! Please feel free to fork the repository and submit a pull request with your improvements or bug fixes.
+#### License
+This project is licensed under the MIT License. Feel free to use and modify as needed.
 
-License
+---
 
-This project is licensed under the MIT License.
+Start staying hydrated and tracking your progress today with the Water Reminder Chrome Extension!
+
